@@ -1,6 +1,7 @@
 class Journal
 {
     private List<Entry> _entries = new List<Entry>();
+
     public void Display()
     {
         Console.WriteLine("Journal Entries:");
@@ -31,9 +32,9 @@ class Journal
             foreach (string line in lines)
             {
                 string[] parts = line.Split('|');
-                if (parts.Length == 3)
+                if (parts.Length == 4)
                 {
-                    _entries.Add(new Entry(parts[0], int.Parse(parts[1]), parts[2]));
+                    _entries.Add(new Entry(parts[0], int.Parse(parts[1]), parts[2], parts[3]));
                 }
             }
             Console.WriteLine("Journal loaded successfully.");
