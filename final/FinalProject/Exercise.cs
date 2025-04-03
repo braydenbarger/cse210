@@ -2,23 +2,23 @@ public abstract class Exercise
 {
     private string _name;
     private int _duration;
-    private double _intensity;
+    private DateTime _date;
 
-    public Exercise(string name, int duration, double intensity)
+    protected Exercise(string name, int duration)
     {
         _name = name;
         _duration = duration;
-        _intensity = intensity;
+        _date = DateTime.Now;
     }
 
     public string Name => _name;
     public int Duration => _duration;
-    public double Intensity => _intensity;
+    public DateTime Date => _date;
 
-    public abstract double CalculateCaloriesBurned();
+    public abstract double CalculateCaloriesBurned(User user);
 
-    public virtual string GetExerciseDetails()
+    public virtual string GetExerciseDetails(User user)
     {
-        return $"{_name} - Duration: {_duration} min - Intensity: {Intensity}";
+        return $"{Name} | Duration: {Duration} min | Calories: {CalculateCaloriesBurned(user):0.0}";
     }
 }
